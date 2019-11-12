@@ -1,4 +1,5 @@
 ﻿using ImagesAsLayers.Classes;
+using ImagesAsLayers.Classes.BinaryOperations;
 using System;
 using System.Windows.Forms;
 
@@ -55,7 +56,7 @@ namespace ImagesAsLayers
       frm.ShowDialog();
     }
 
-    private void btnAddFile_Click(object sender, EventArgs e)
+    private void mnuQueueAddFile_Click(object sender, EventArgs e)
     {
       var q = new FileSource();
       Program.QueueList.Add(q);
@@ -63,9 +64,18 @@ namespace ImagesAsLayers
       RebuildList();
     }
 
-    private void btnAddFolder_Click(object sender, EventArgs e)
+    private void mnuQueueAddFolder_Click(object sender, EventArgs e)
     {
       var q = new FolderSource();
+      Program.QueueList.Add(q);
+      OpenEditorBy(q);
+      RebuildList();
+    }
+
+    private void mnuQueueAddBinarySum_Click(object sender, EventArgs e)
+    {
+      var o = new SumOperator();
+      var q = new MergeSource(o);
       Program.QueueList.Add(q);
       OpenEditorBy(q);
       RebuildList();

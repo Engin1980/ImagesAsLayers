@@ -9,16 +9,29 @@ namespace ImagesAsLayers.Classes
 {
   public class MergeSource : IGetImage
   {
-    public IGetImage A { get; set; }
-    public IGetImage B { get; set; }
+    private IGetImage a;
+    private IGetImage b;
     public IBinaryOperator Operator { get; set; }
+
+    int FirstRelativeIndexShift { get; set; } = -2;
+    int SecondRelativeIndexShift { get; set; } = -1;
 
     public string Title => Operator.Title;
 
+    public MergeSource(IBinaryOperator binaryOperator)
+    {
+      this.Operator = binaryOperator;
+    }
+
+    public void UpdateMapping(List<IGetImage> lst)
+    {
+      throw new NotImplementedException();
+    }
+
     public Bitmap GetImage(int index)
     {
-      Bitmap bmpA = this.A.GetImage(index);
-      Bitmap bmpB = this.B.GetImage(index);
+      Bitmap bmpA = this.a.GetImage(index);
+      Bitmap bmpB = this.b.GetImage(index);
       Bitmap res = this.Operator.Merge(bmpA, bmpB);
       return res;
     }

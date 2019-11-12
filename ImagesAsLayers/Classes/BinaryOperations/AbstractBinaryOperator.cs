@@ -5,11 +5,6 @@ namespace ImagesAsLayers.Classes.BinaryOperations
 {
   public abstract class AbstractBinaryOperator : IBinaryOperator
   {
-    public int FirstRelativeIndexShift { get; set; } = -2;
-    public int SecondRelativeIndexShift { get; set; } = -1;
-
-    public string IndicesShifts { get => $"(of {FirstRelativeIndexShift},{SecondRelativeIndexShift}"; }
-
     public abstract string Title { get; }
 
     public abstract Bitmap Merge(Bitmap a, Bitmap b);

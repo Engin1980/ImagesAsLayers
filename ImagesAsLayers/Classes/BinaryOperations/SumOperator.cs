@@ -9,7 +9,7 @@ namespace ImagesAsLayers.Classes.BinaryOperations
 {
   public class SumOperator : AbstractBinaryOperator
   {
-    public override string Title => $"Sum {base.IndicesShifts}";
+    public override string Title => $"Sum";
     public bool Clip { get; set; }
 
     public override Bitmap Merge(Bitmap a, Bitmap b)
