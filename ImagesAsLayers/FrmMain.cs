@@ -1,6 +1,6 @@
 ﻿using ImagesAsLayers.Classes;
-using ImagesAsLayers.Classes.BinaryOperations;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ImagesAsLayers
@@ -12,73 +12,46 @@ namespace ImagesAsLayers
       InitializeComponent();
     }
 
-    private void Form1_Load(object sender, EventArgs e)
+    private void RedrawImage()
     {
-
+      this.Cursor = Cursors.WaitCursor;
+      Image ret = GetResultImage((int) nudIndex.Value);
+      if (ret != null)
+        picImg.Image = ret;
+      this.Cursor = Cursors.Default;
     }
 
-    private void RebuildList()
+    private Bitmap GetResultImage(int index)
     {
-      var q = Program.QueueList;
+      Bitmap a = srcA.TryGetImage(index);
+      Bitmap b = srcB.TryGetImage(index);
+      Bitmap c = srcC.TryGetImage(index);
+      IBinaryOperator operAB = mergeAB.TryGetOperator();
+      IBinaryOperator operBC = mergeBC.TryGetOperator();
+      Bitmap ret = null;
 
-      lstItems.Items.Clear();
-      foreach (var item in q)
-      {
-        string s = item.Title;
-        lstItems.Items.Add(s);
-      }
+      if (a == null) return ret;
+
+      ret = a;
+      if (b == null) return ret;
+      if (operAB == null) return ret;
+      ret = operAB.Merge(ret, b);
+
+      if (c == null) return ret;
+      if (operBC == null) return ret;
+      ret = operBC.Merge(ret, c);
+
+      return ret;
     }
 
-    private void OpenEditorBy(IGetImage item)
+    private void btnRedraw_Click(object sender, EventArgs e)
     {
-      Form frm;
-      if (item is FileSource)
-      {
-        var tmp = new Forms.FrmFileSourceEditor
-        {
-          FileSource = item as FileSource
-        };
-        frm = tmp;
-      }
-      else if (item is FolderSource)
-      {
-        var tmp = new Forms.FrmFolderSourceEditor
-        {
-          FolderSource = item as FolderSource
-        };
-        frm = tmp;
-      }
-      else
-      {
-        throw new Exception("Unknown IGetImage implementation.");
-      }
-
-      frm.ShowDialog();
+      RedrawImage();
     }
 
-    private void mnuQueueAddFile_Click(object sender, EventArgs e)
+    private void nudIndex_ValueChanged(object sender, EventArgs e)
     {
-      var q = new FileSource();
-      Program.QueueList.Add(q);
-      OpenEditorBy(q);
-      RebuildList();
-    }
-
-    private void mnuQueueAddFolder_Click(object sender, EventArgs e)
-    {
-      var q = new FolderSource();
-      Program.QueueList.Add(q);
-      OpenEditorBy(q);
-      RebuildList();
-    }
-
-    private void mnuQueueAddBinarySum_Click(object sender, EventArgs e)
-    {
-      var o = new SumOperator();
-      var q = new MergeSource(o);
-      Program.QueueList.Add(q);
-      OpenEditorBy(q);
-      RebuildList();
+      RedrawImage();
     }
   }
 }

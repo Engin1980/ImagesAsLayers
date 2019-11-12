@@ -25,7 +25,9 @@ namespace ImagesAsLayers.Classes
 
     public void UpdateMapping(List<IGetImage> lst)
     {
-      throw new NotImplementedException();
+      int myIndex = lst.IndexOf(this);
+      this.a = lst[myIndex + FirstRelativeIndexShift];
+      this.b = lst[myIndex + SecondRelativeIndexShift];
     }
 
     public Bitmap GetImage(int index)

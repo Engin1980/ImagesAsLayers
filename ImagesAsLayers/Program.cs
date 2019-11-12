@@ -20,6 +20,9 @@ namespace ImagesAsLayers
       Application.Run(new FrmMain());
     }
 
-    public static List<IGetImage> QueueList { get; set; } = new List<IGetImage>();
+    public static void Log(string message)
+    {
+
+    }
   }
 }

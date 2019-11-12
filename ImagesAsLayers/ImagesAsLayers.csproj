@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BinaryOperations\AbstractBinaryOperator.cs" />
+    <Compile Include="Classes\BinaryOperations\MeanOperator.cs" />
+    <Compile Include="Classes\BinaryOperations\OverlayOperator.cs" />
     <Compile Include="Classes\BinaryOperations\SumOperator.cs" />
     <Compile Include="Classes\Sources\FileSource.cs" />
     <Compile Include="Classes\Sources\FolderSource.cs" />
@@ -54,34 +56,43 @@
     <Compile Include="Classes\IBinaryOperator.cs" />
     <Compile Include="Classes\ISource.cs" />
     <Compile Include="Classes\MergeSource.cs" />
+    <Compile Include="Controls\FolderSource.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FolderSource.Designer.cs">
+      <DependentUpon>FolderSource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MergeOperation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MergeOperation.Designer.cs">
+      <DependentUpon>MergeOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProperties.Designer.cs">
+      <DependentUpon>FrmProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmFileSourceEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmFileSourceEditor.Designer.cs">
-      <DependentUpon>FrmFileSourceEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmFolderSourceEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmFolderSourceEditor.Designer.cs">
-      <DependentUpon>FrmFolderSourceEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\FolderSource.resx">
+      <DependentUpon>FolderSource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MergeOperation.resx">
+      <DependentUpon>MergeOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProperties.resx">
+      <DependentUpon>FrmProperties.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmFileSourceEditor.resx">
-      <DependentUpon>FrmFileSourceEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmFolderSourceEditor.resx">
-      <DependentUpon>FrmFolderSourceEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,8 +116,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

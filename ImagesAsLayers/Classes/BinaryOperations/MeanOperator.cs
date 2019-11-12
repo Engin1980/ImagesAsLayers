@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace ImagesAsLayers.Classes.BinaryOperations
 {
-  public class SumOperator : AbstractBinaryOperator
+  class MeanOperator : AbstractBinaryOperator
   {
-    public override string Title => $"Sum";
+    public override string Title => "Mean";
+
     public override Bitmap Merge(Bitmap a, Bitmap b)
     {
-      Bitmap ret = base.Apply(a, b, (x, y) => x + y);
+      Bitmap ret = base.Apply(a, b, (x, y) => (x + y) / 2);
       return ret;
     }
   }

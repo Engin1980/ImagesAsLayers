@@ -29,23 +29,20 @@
     private void InitializeComponent()
     {
       this.pnlTop = new System.Windows.Forms.Panel();
-      this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-      this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.queueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.mnuQueueAddFile = new System.Windows.Forms.ToolStripMenuItem();
-      this.mnuQueueAddFolder = new System.Windows.Forms.ToolStripMenuItem();
-      this.binaryOperationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.mnuQueueAddBinarySum = new System.Windows.Forms.ToolStripMenuItem();
+      this.btnRedraw = new System.Windows.Forms.Button();
+      this.nudIndex = new System.Windows.Forms.NumericUpDown();
+      this.label1 = new System.Windows.Forms.Label();
+      this.srcC = new ImagesAsLayers.Controls.FolderSource();
+      this.mergeBC = new ImagesAsLayers.Controls.MergeOperation();
+      this.srcB = new ImagesAsLayers.Controls.FolderSource();
+      this.mergeAB = new ImagesAsLayers.Controls.MergeOperation();
+      this.srcA = new ImagesAsLayers.Controls.FolderSource();
       this.pnlBottom = new System.Windows.Forms.Panel();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-      this.lstItems = new System.Windows.Forms.ListBox();
-      this.panel1 = new System.Windows.Forms.Panel();
       this.picImg = new System.Windows.Forms.PictureBox();
       this.pnlTop.SuspendLayout();
-      this.menuStrip1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.nudIndex)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-      this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
@@ -53,77 +50,92 @@
       // 
       // pnlTop
       // 
-      this.pnlTop.Controls.Add(this.menuStrip1);
+      this.pnlTop.Controls.Add(this.btnRedraw);
+      this.pnlTop.Controls.Add(this.nudIndex);
+      this.pnlTop.Controls.Add(this.label1);
+      this.pnlTop.Controls.Add(this.srcC);
+      this.pnlTop.Controls.Add(this.mergeBC);
+      this.pnlTop.Controls.Add(this.srcB);
+      this.pnlTop.Controls.Add(this.mergeAB);
+      this.pnlTop.Controls.Add(this.srcA);
       this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlTop.Location = new System.Drawing.Point(0, 0);
       this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
       this.pnlTop.Name = "pnlTop";
-      this.pnlTop.Size = new System.Drawing.Size(1227, 66);
+      this.pnlTop.Size = new System.Drawing.Size(1227, 214);
       this.pnlTop.TabIndex = 0;
       // 
-      // menuStrip1
+      // btnRedraw
       // 
-      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.queueToolStripMenuItem});
-      this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-      this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(1227, 24);
-      this.menuStrip1.TabIndex = 0;
-      this.menuStrip1.Text = "menuStrip1";
+      this.btnRedraw.Location = new System.Drawing.Point(216, 179);
+      this.btnRedraw.Name = "btnRedraw";
+      this.btnRedraw.Size = new System.Drawing.Size(95, 23);
+      this.btnRedraw.TabIndex = 9;
+      this.btnRedraw.Text = "Redraw";
+      this.btnRedraw.UseVisualStyleBackColor = true;
+      this.btnRedraw.Click += new System.EventHandler(this.btnRedraw_Click);
       // 
-      // fileToolStripMenuItem
+      // nudIndex
       // 
-      this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-      this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-      this.fileToolStripMenuItem.Text = "&File";
+      this.nudIndex.Location = new System.Drawing.Point(90, 180);
+      this.nudIndex.Name = "nudIndex";
+      this.nudIndex.Size = new System.Drawing.Size(120, 23);
+      this.nudIndex.TabIndex = 8;
+      this.nudIndex.ValueChanged += new System.EventHandler(this.nudIndex_ValueChanged);
       // 
-      // queueToolStripMenuItem
+      // label1
       // 
-      this.queueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
-      this.queueToolStripMenuItem.Name = "queueToolStripMenuItem";
-      this.queueToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-      this.queueToolStripMenuItem.Text = "&Queue";
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(12, 182);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(50, 16);
+      this.label1.TabIndex = 7;
+      this.label1.Text = "Index:";
       // 
-      // addToolStripMenuItem
+      // srcC
       // 
-      this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuQueueAddFile,
-            this.mnuQueueAddFolder,
-            this.binaryOperationToolStripMenuItem});
-      this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-      this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-      this.addToolStripMenuItem.Text = "Add";
+      this.srcC.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.srcC.Location = new System.Drawing.Point(13, 147);
+      this.srcC.Margin = new System.Windows.Forms.Padding(4);
+      this.srcC.Name = "srcC";
+      this.srcC.Size = new System.Drawing.Size(1201, 31);
+      this.srcC.TabIndex = 6;
       // 
-      // mnuQueueAddFile
+      // mergeBC
       // 
-      this.mnuQueueAddFile.Name = "mnuQueueAddFile";
-      this.mnuQueueAddFile.Size = new System.Drawing.Size(180, 22);
-      this.mnuQueueAddFile.Text = "File";
-      this.mnuQueueAddFile.Click += new System.EventHandler(this.mnuQueueAddFile_Click);
+      this.mergeBC.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.mergeBC.Location = new System.Drawing.Point(160, 107);
+      this.mergeBC.Margin = new System.Windows.Forms.Padding(4);
+      this.mergeBC.Name = "mergeBC";
+      this.mergeBC.Size = new System.Drawing.Size(1054, 32);
+      this.mergeBC.TabIndex = 5;
       // 
-      // mnuQueueAddFolder
+      // srcB
       // 
-      this.mnuQueueAddFolder.Name = "mnuQueueAddFolder";
-      this.mnuQueueAddFolder.Size = new System.Drawing.Size(180, 22);
-      this.mnuQueueAddFolder.Text = "Folder";
-      this.mnuQueueAddFolder.Click += new System.EventHandler(this.mnuQueueAddFolder_Click);
+      this.srcB.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.srcB.Location = new System.Drawing.Point(13, 77);
+      this.srcB.Margin = new System.Windows.Forms.Padding(4);
+      this.srcB.Name = "srcB";
+      this.srcB.Size = new System.Drawing.Size(1201, 31);
+      this.srcB.TabIndex = 4;
       // 
-      // binaryOperationToolStripMenuItem
+      // mergeAB
       // 
-      this.binaryOperationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuQueueAddBinarySum});
-      this.binaryOperationToolStripMenuItem.Name = "binaryOperationToolStripMenuItem";
-      this.binaryOperationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-      this.binaryOperationToolStripMenuItem.Text = "Binary operation";
+      this.mergeAB.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.mergeAB.Location = new System.Drawing.Point(160, 41);
+      this.mergeAB.Margin = new System.Windows.Forms.Padding(4);
+      this.mergeAB.Name = "mergeAB";
+      this.mergeAB.Size = new System.Drawing.Size(1054, 32);
+      this.mergeAB.TabIndex = 3;
       // 
-      // mnuQueueAddBinarySum
+      // srcA
       // 
-      this.mnuQueueAddBinarySum.Name = "mnuQueueAddBinarySum";
-      this.mnuQueueAddBinarySum.Size = new System.Drawing.Size(180, 22);
-      this.mnuQueueAddBinarySum.Text = "Sum";
-      this.mnuQueueAddBinarySum.Click += new System.EventHandler(this.mnuQueueAddBinarySum_Click);
+      this.srcA.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.srcA.Location = new System.Drawing.Point(13, 13);
+      this.srcA.Margin = new System.Windows.Forms.Padding(4);
+      this.srcA.Name = "srcA";
+      this.srcA.Size = new System.Drawing.Size(1201, 31);
+      this.srcA.TabIndex = 2;
       // 
       // pnlBottom
       // 
@@ -137,41 +149,17 @@
       // splitContainer1
       // 
       this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.splitContainer1.Location = new System.Drawing.Point(0, 66);
+      this.splitContainer1.Location = new System.Drawing.Point(0, 214);
       this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
       this.splitContainer1.Name = "splitContainer1";
-      // 
-      // splitContainer1.Panel1
-      // 
-      this.splitContainer1.Panel1.Controls.Add(this.lstItems);
-      this.splitContainer1.Panel1.Controls.Add(this.panel1);
       // 
       // splitContainer1.Panel2
       // 
       this.splitContainer1.Panel2.Controls.Add(this.picImg);
-      this.splitContainer1.Size = new System.Drawing.Size(1227, 503);
-      this.splitContainer1.SplitterDistance = 222;
+      this.splitContainer1.Size = new System.Drawing.Size(1227, 355);
+      this.splitContainer1.SplitterDistance = 25;
       this.splitContainer1.SplitterWidth = 5;
       this.splitContainer1.TabIndex = 1;
-      // 
-      // lstItems
-      // 
-      this.lstItems.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.lstItems.FormattingEnabled = true;
-      this.lstItems.ItemHeight = 16;
-      this.lstItems.Location = new System.Drawing.Point(0, 36);
-      this.lstItems.Name = "lstItems";
-      this.lstItems.Size = new System.Drawing.Size(222, 467);
-      this.lstItems.TabIndex = 1;
-      // 
-      // panel1
-      // 
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel1.Location = new System.Drawing.Point(0, 0);
-      this.panel1.Margin = new System.Windows.Forms.Padding(4);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(222, 36);
-      this.panel1.TabIndex = 0;
       // 
       // picImg
       // 
@@ -179,7 +167,7 @@
       this.picImg.Location = new System.Drawing.Point(0, 0);
       this.picImg.Margin = new System.Windows.Forms.Padding(4);
       this.picImg.Name = "picImg";
-      this.picImg.Size = new System.Drawing.Size(1000, 503);
+      this.picImg.Size = new System.Drawing.Size(1197, 355);
       this.picImg.TabIndex = 0;
       this.picImg.TabStop = false;
       // 
@@ -192,16 +180,12 @@
       this.Controls.Add(this.pnlBottom);
       this.Controls.Add(this.pnlTop);
       this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-      this.MainMenuStrip = this.menuStrip1;
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmMain";
       this.Text = "Form1";
-      this.Load += new System.EventHandler(this.Form1_Load);
       this.pnlTop.ResumeLayout(false);
       this.pnlTop.PerformLayout();
-      this.menuStrip1.ResumeLayout(false);
-      this.menuStrip1.PerformLayout();
-      this.splitContainer1.Panel1.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.nudIndex)).EndInit();
       this.splitContainer1.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
       this.splitContainer1.ResumeLayout(false);
@@ -215,17 +199,15 @@
     private System.Windows.Forms.Panel pnlTop;
     private System.Windows.Forms.Panel pnlBottom;
     private System.Windows.Forms.SplitContainer splitContainer1;
-    private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.PictureBox picImg;
-    private System.Windows.Forms.ListBox lstItems;
-    private System.Windows.Forms.MenuStrip menuStrip1;
-    private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem queueToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem mnuQueueAddFile;
-    private System.Windows.Forms.ToolStripMenuItem mnuQueueAddFolder;
-    private System.Windows.Forms.ToolStripMenuItem binaryOperationToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem mnuQueueAddBinarySum;
+    private Controls.FolderSource srcA;
+    private Controls.FolderSource srcC;
+    private Controls.MergeOperation mergeBC;
+    private Controls.FolderSource srcB;
+    private Controls.MergeOperation mergeAB;
+    private System.Windows.Forms.Button btnRedraw;
+    private System.Windows.Forms.NumericUpDown nudIndex;
+    private System.Windows.Forms.Label label1;
   }
 }
 
